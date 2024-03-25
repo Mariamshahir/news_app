@@ -42,6 +42,7 @@ class _TabsListState extends State<TabsList> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TabBar(
+            tabAlignment: TabAlignment.start,
             tabs: sources.map((source) {
               return tabsView(
                   source, currentTabIndex == sources.indexOf(source));
