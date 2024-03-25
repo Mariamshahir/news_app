@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/homescreen.dart';
+import 'package:news_app/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        HomeScreen.routeName:(_)=> HomeScreen(),
+        Splash.routeName: (_) => Splash(),
+        HomeScreen.routeName: (_) => HomeScreen(),
       },
-      initialRoute: HomeScreen.routeName,
+      initialRoute: Splash.routeName,
     );
   }
 }
