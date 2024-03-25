@@ -10,11 +10,12 @@ abstract class ApiManger {
       Response response = await get(url);
       print("v2/top-headlines/sources(Body)-> ${response.body}");
       Map mapBody = jsonDecode(response.body);
+      SourcesResponse sourcesResponse = SourcesResponse.fromJson(mapBody);
       if (response.statusCode >= 200 && response.statusCode < 300) {
-        SourcesResponse sourcesResponse = SourcesResponse.fromJson(mapBody);
         return sourcesResponse;
       } else {
-        throw "Something went wrong please try again later";
+        throw sourcesResponse.message ??
+            "Something went wrong please try again later";
       }
     } catch (e) {
       rethrow;

@@ -3,11 +3,15 @@ import 'package:news_app/model/source.dart';
 class SourcesResponse {
   String? status;
   List<Source>? sources;
+  String? code;
+  String? message;
 
-  SourcesResponse({this.status, this.sources});
+  SourcesResponse({this.status, this.sources,this.message,this.code});
 
   SourcesResponse.fromJson(dynamic json) {
     status = json['status'];
+    message = json['message'];
+    code = json['code'];
     if (json['sources'] != null) {
       sources = <Source>[];
       json['sources'].forEach((v) {
