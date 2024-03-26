@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/data/api_manger.dart';
 import 'package:news_app/model/source.dart';
+import 'package:news_app/tabs/news/taps_details.dart';
 import 'package:news_app/utils/colors_app.dart';
 import 'package:news_app/widgets/app_error.dart';
 import 'package:news_app/widgets/loddingapp.dart';
@@ -57,9 +58,7 @@ class _TabsListState extends State<TabsList> {
           ),
           Expanded(
             child: TabBarView(
-              children: sources.map((source) {
-                return Text(source.url ?? "");
-              }).toList(),
+              children: sources.map((source) => TapsDetails(sourceId: source.id!,)).toList(),
             ),
           ),
         ],
