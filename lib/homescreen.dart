@@ -23,6 +23,9 @@ class HomeScreen extends StatelessWidget {
                 style: AppTheme.appBarTextStyle,
               ),
               centerTitle: true,
+              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(35)
+              )),
             ),
             backgroundColor: Colors.transparent,
             body: const TabsList()
