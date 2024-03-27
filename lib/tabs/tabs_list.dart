@@ -7,7 +7,8 @@ import 'package:news_app/widgets/app_error.dart';
 import 'package:news_app/widgets/loddingapp.dart';
 
 class TabsList extends StatefulWidget {
-  const TabsList({Key? key}) : super(key: key);
+  final String categoryId;
+  const TabsList({super.key,required this.categoryId});
 
   @override
   State<TabsList> createState() => _TabsListState();
@@ -19,7 +20,7 @@ class _TabsListState extends State<TabsList> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: ApiManger.loadTabsList(),
+      future: ApiManger.loadTabsList(widget.categoryId),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return AppError(error: snapshot.error.toString());
