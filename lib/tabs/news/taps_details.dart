@@ -5,15 +5,20 @@ import 'package:news_app/model/article.dart';
 import 'package:news_app/widgets/app_error.dart';
 import 'package:news_app/widgets/loddingapp.dart';
 
-class TapsDetails extends StatelessWidget {
+class TapsDetails extends StatefulWidget {
   final String sourceId;
 
   const TapsDetails({super.key, required this.sourceId});
 
   @override
+  State<TapsDetails> createState() => _TapsDetailsState();
+}
+
+class _TapsDetailsState extends State<TapsDetails> {
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: ApiManger.loadArticlesList(sourceId),
+        future: ApiManger.loadArticlesList(widget.sourceId),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return AppError(error: snapshot.error.toString());
