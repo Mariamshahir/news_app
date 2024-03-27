@@ -48,14 +48,14 @@ class _TapsDetailsState extends State<TapsDetails> {
         ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: CachedNetworkImage(
-            imageUrl: article.urlToImage!,
+            imageUrl: article.urlToImage ?? '',
             height: MediaQuery.of(context).size.height*0.25,
             placeholder: (_, __) => const Center(
                 child: CircularProgressIndicator(
               color: Colors.blue,
             )),
             errorWidget: (_, __, ___) => const Icon(
-              Icons.error_outline,
+              Icons.image_not_supported_outlined,
               color: Colors.red,
             ),
           ),
