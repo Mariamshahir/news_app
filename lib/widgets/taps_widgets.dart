@@ -48,7 +48,7 @@ class _TapsDetailsState extends State<TapsDetails> {
         ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: CachedNetworkImage(
-            imageUrl: article.urlToImage ?? '',
+            imageUrl: article.urlToImage ?? "",
             height: MediaQuery.of(context).size.height*0.25,
             placeholder: (_, __) => const Center(
                 child: CircularProgressIndicator(
