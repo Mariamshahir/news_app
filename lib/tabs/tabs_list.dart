@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/data/api_manger.dart';
 import 'package:news_app/model/source.dart';
+import 'package:news_app/view_model/tabs_list_view_model.dart';
 import 'package:news_app/widgets/taps_widgets.dart';
 import 'package:news_app/utils/colors_app.dart';
 import 'package:news_app/widgets/app_error.dart';
 import 'package:news_app/widgets/loddingapp.dart';
+import 'package:provider/provider.dart';
 
 class TabsList extends StatefulWidget {
   final String categoryId;
-  const TabsList({super.key,required this.categoryId});
+
+  const TabsList({super.key, required this.categoryId});
 
   @override
   State<TabsList> createState() => _TabsListState();
@@ -16,20 +18,33 @@ class TabsList extends StatefulWidget {
 
 class _TabsListState extends State<TabsList> {
   int currentTabIndex = 0;
+  TabsListViewModel viewModel = TabsListViewModel();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    viewModel.loadTabsList(widget.categoryId);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: ApiManger.loadTabsList(widget.categoryId),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return AppError(error: snapshot.error.toString());
-        } else if (snapshot.hasData) {
-          return tabsList(snapshot.data!.sources!);
-        } else {
-          return const LoaddingApp();
-        }
-      },
+    return ChangeNotifierProvider(
+      create: (_) => viewModel,
+      child: Builder(
+        builder: (context) {
+          viewModel = Provider.of(context, listen: true);
+          if (viewModel.state == TapsListState.loading) {
+            return const LoaddingApp();
+          } else if (viewModel.state == TapsListState.success) {
+            return tabsList(viewModel.sources);
+          } else {
+            return AppError(error: viewModel.errorMessage,onRefreshClick: (){
+              viewModel.loadTabsList(widget.categoryId);
+            },);
+          }
+        },
+      ),
     );
   }
 
@@ -59,7 +74,11 @@ class _TabsListState extends State<TabsList> {
           ),
           Expanded(
             child: TabBarView(
-              children: sources.map((source) => TapsDetails(sourceId: source.id!,)).toList(),
+              children: sources
+                  .map((source) => TapsDetails(
+                        sourceId: source.id!,
+                      ))
+                  .toList(),
             ),
           ),
         ],
