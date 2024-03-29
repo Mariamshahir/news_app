@@ -1,5 +1,8 @@
 {
   "newsApp": "News App",
+  "newApp": "News App!",
   "settings": "Settings",
+  "title": "Pick your category \nof interest",
+  "categories": "Categories",
   "language": "Language"
 }

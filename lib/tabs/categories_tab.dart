@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/model/category.dart';
+import 'package:news_app/utils/app_language.dart';
 import 'package:news_app/utils/colors_app.dart';
 import 'package:news_app/widgets/category_widgets.dart';
 
@@ -15,9 +16,9 @@ class Categories extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.symmetric(vertical: 36, horizontal: 22),
-          child: const Text(
-            "Pick your category \nof interest",
-            style: TextStyle(
+          child:  Text(
+            context.getLocalizations.title,
+            style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
                 color: AppColors.gray),
