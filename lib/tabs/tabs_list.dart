@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/model/source.dart';
 import 'package:news_app/view_model/tabs_list_view_model.dart';
-import 'package:news_app/widgets/taps_widgets.dart';
+import 'package:news_app/widgets/tabs_widgets.dart';
 import 'package:news_app/utils/colors_app.dart';
 import 'package:news_app/widgets/app_error.dart';
 import 'package:news_app/widgets/loddingapp.dart';
