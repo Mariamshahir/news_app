@@ -50,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
               image: DecorationImage(image: AssetImage(AppAssets.background))),
           child: Scaffold(
               appBar: AppBar(
+                iconTheme: IconThemeData(color: AppColors.white),
                 backgroundColor: AppColors.appBarBackground,
                 title: Text(
                   context.getLocalizations.newsApp,
