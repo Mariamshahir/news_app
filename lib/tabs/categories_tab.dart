@@ -14,9 +14,9 @@ class Categories extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          margin: const EdgeInsets.symmetric(vertical: 36, horizontal: 19),
+          margin: const EdgeInsets.symmetric(vertical: 36, horizontal: 22),
           child: const Text(
-            "Pick your category of interest",
+            "Pick your category \nof interest",
             style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
