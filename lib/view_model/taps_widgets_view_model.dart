@@ -7,12 +7,12 @@ class TapsWidgetsViewModel extends ChangeNotifier{
   TapsWidgetsState state = TapsWidgetsState.loading;
   List<Article> articles = [];
   String errorMessage = "";
-  Future<void> loadArticlesList(String sourceId) async {
+  Future<void> loadArticlesList(String sourceId,String? searchKeyword) async {
     state = TapsWidgetsState.loading;
     notifyListeners();
     try {
       ArticlesResponse articlesResponse =
-      await ApiManger.loadArticlesList(sourceId);
+      await ApiManger.loadArticlesList(sourceId,searchKeyword);
       state = TapsWidgetsState.success;
       articles = articlesResponse.articles!;
       notifyListeners();

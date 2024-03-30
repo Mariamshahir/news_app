@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/model/category.dart';
 import 'package:news_app/provider/language_provider.dart';
 import 'package:news_app/tabs/categories_tab.dart';
+import 'package:news_app/tabs/search.dart';
 import 'package:news_app/tabs/settings.dart';
 import 'package:news_app/tabs/tabs_list.dart';
 import 'package:news_app/utils/app_language.dart';
@@ -59,6 +60,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 shape: const RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.vertical(bottom: Radius.circular(35))),
+                actions: [
+                  IconButton(
+                      onPressed: () {
+                        setState(() {
+                          showSearch(context: context, delegate: SearchTab());
+                        });
+                      },
+                      icon: const Icon(
+                        Icons.search,
+                        color: AppColors.white,
+                        size: 30,
+                      ))
+                ],
                 leading: Builder(
                   builder: (context) => IconButton(
                     icon: const Icon(

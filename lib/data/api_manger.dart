@@ -25,10 +25,10 @@ abstract class ApiManger {
     }
   }
 
-  static Future<ArticlesResponse> loadArticlesList(String sourceId,{language='en'}) async {
+  static Future<ArticlesResponse> loadArticlesList(String? sourceId,String? searchKeyword ,{language='en'}) async {
     try {
       Uri url =
-          Uri.parse("$baseUrl/v2/everything?apiKey=$apiKey&sources=$sourceId&language=$language");
+          Uri.parse("$baseUrl/v2/everything?apiKey=$apiKey&sources=$sourceId&language=$language&q=$searchKeyword");
       Response apiResponse = await get(url);
       ArticlesResponse articlesResponse =
           ArticlesResponse.fromJson(jsonDecode(apiResponse.body));
