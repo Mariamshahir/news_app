@@ -4,5 +4,7 @@
   "settings": "Settings",
   "title": "Pick your category \nof interest",
   "categories": "Categories",
-  "language": "Language"
+  "language": "Language",
+  "viewFullArticle": "View Full Article",
+  "newsTitle": "News Title"
 }

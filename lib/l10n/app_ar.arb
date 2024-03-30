@@ -4,5 +4,7 @@
   "settings": "الاعدادات",
   "categories": "الفئات",
   "title": "اختر الفئه\nالتي تهمك",
-  "language": "اللغه"
+  "language": "اللغه",
+  "viewFullArticle": "عرض المقال كاملا",
+  "newsTitle": "عنوان الأخبار"
 }

@@ -6,7 +6,6 @@ import 'package:news_app/provider/language_provider.dart';
 import 'package:news_app/splash.dart';
 import 'package:provider/provider.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
