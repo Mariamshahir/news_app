@@ -35,12 +35,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return SafeArea(
       child: WillPopScope(
-        onWillPop: ()async {
-          if(body is Categories){
+        onWillPop: () async {
+          if (body is Categories) {
             return true;
-          }else{
+          } else {
             setState(() {
-              body==Categories(onCategoryClick: onCategoryClick);
+              body == Categories(onCategoryClick: onCategoryClick);
             });
             return false;
           }
@@ -50,7 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
               image: DecorationImage(image: AssetImage(AppAssets.background))),
           child: Scaffold(
               appBar: AppBar(
-                iconTheme: IconThemeData(color: AppColors.white),
                 backgroundColor: AppColors.appBarBackground,
                 title: Text(
                   context.getLocalizations.newsApp,
@@ -60,6 +59,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 shape: const RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.vertical(bottom: Radius.circular(35))),
+                leading: Builder(
+                  builder: (context) => IconButton(
+                    icon: const Icon(
+                      Icons.menu,
+                      color: AppColors.white,
+                      size: 30,
+                    ),
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                  ),
+                ),
               ),
               drawer: buildDrawer(),
               backgroundColor: Colors.transparent,
@@ -77,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
               color: AppColors.appBarBackground,
               width: double.infinity,
               padding: const EdgeInsets.all(50),
-              child:  Center(
+              child: Center(
                 child: Text(
                   context.getLocalizations.newApp,
                   style: const TextStyle(
@@ -89,13 +100,15 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(
             height: 25,
           ),
-          buildDrawerItem(Icons.list_sharp, context.getLocalizations.categories, () {
+          buildDrawerItem(Icons.list_sharp, context.getLocalizations.categories,
+              () {
             setState(() {
               body = Categories(onCategoryClick: onCategoryClick);
               Navigator.pop(context);
             });
           }),
-          buildDrawerItem(Icons.settings, context.getLocalizations.settings, () {
+          buildDrawerItem(Icons.settings, context.getLocalizations.settings,
+              () {
             setState(() {
               body = const Settings();
               Navigator.pop(context);
@@ -134,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void onCategoryClick(Category category) {
     setState(() {
-      body=TabsList(categoryId: category.backEndId);
+      body = TabsList(categoryId: category.backEndId);
     });
   }
 }
