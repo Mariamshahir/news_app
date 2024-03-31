@@ -9,8 +9,9 @@ import 'package:provider/provider.dart';
 
 class TapsDetails extends StatefulWidget {
   final String sourceId;
+  final String? searchKeyword;
 
-  const TapsDetails({super.key, required this.sourceId});
+  const TapsDetails({super.key, required this.sourceId, this.searchKeyword});
 
   @override
   State<TapsDetails> createState() => _TapsDetailsState();
@@ -23,7 +24,7 @@ class _TapsDetailsState extends State<TapsDetails> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    viewModel.loadArticlesList(widget.sourceId);
+    viewModel.loadArticlesList(widget.sourceId,widget.searchKeyword);
   }
 
   @override
@@ -39,7 +40,7 @@ class _TapsDetailsState extends State<TapsDetails> {
             return articlesList(viewModel.articles);
           } else {
             return AppError(error: viewModel.errorMessage,onRefreshClick: (){
-              viewModel.loadArticlesList(widget.sourceId);
+              viewModel.loadArticlesList(widget.sourceId,widget.searchKeyword);
             },);
           }
         },

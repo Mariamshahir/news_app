@@ -34,62 +34,60 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     provider = Provider.of(context);
 
-    return SafeArea(
-      child: WillPopScope(
-        onWillPop: () async {
-          if (body is Categories) {
-            return true;
-          } else {
-            setState(() {
-              body == Categories(onCategoryClick: onCategoryClick);
-            });
-            return false;
-          }
-        },
-        child: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(image: AssetImage(AppAssets.background))),
-          child: Scaffold(
-              appBar: AppBar(
-                backgroundColor: AppColors.appBarBackground,
-                title: Text(
-                  context.getLocalizations.newsApp,
-                  style: AppTheme.appBarTextStyle,
-                ),
-                centerTitle: true,
-                shape: const RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.vertical(bottom: Radius.circular(35))),
-                actions: [
-                  IconButton(
-                      onPressed: () {
-                        setState(() {
-                          showSearch(context: context, delegate: SearchTab());
-                        });
-                      },
-                      icon: const Icon(
-                        Icons.search,
-                        color: AppColors.white,
-                        size: 30,
-                      ))
-                ],
-                leading: Builder(
-                  builder: (context) => IconButton(
+    return WillPopScope(
+      onWillPop: () async {
+        if (body is Categories) {
+          return true;
+        } else {
+          setState(() {
+            body == Categories(onCategoryClick: onCategoryClick);
+          });
+          return false;
+        }
+      },
+      child: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(image: AssetImage(AppAssets.background))),
+        child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: AppColors.appBarBackground,
+              title: Text(
+                context.getLocalizations.newsApp,
+                style: AppTheme.appBarTextStyle,
+              ),
+              centerTitle: true,
+              shape: const RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.vertical(bottom: Radius.circular(35))),
+              actions: [
+                IconButton(
+                    onPressed: () {
+                      setState(() {
+                        showSearch(context: context, delegate: SearchTab());
+                      });
+                    },
                     icon: const Icon(
-                      Icons.menu,
+                      Icons.search,
                       color: AppColors.white,
                       size: 30,
-                    ),
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
+                    ))
+              ],
+              leading: Builder(
+                builder: (context) => IconButton(
+                  icon: const Icon(
+                    Icons.menu,
+                    color: AppColors.white,
+                    size: 30,
                   ),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
                 ),
               ),
-              drawer: buildDrawer(),
-              backgroundColor: Colors.transparent,
-              body: body),
-        ),
+            ),
+            drawer: buildDrawer(),
+            backgroundColor: Colors.transparent,
+            body: body),
       ),
     );
   }

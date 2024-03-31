@@ -8,7 +8,7 @@ class SearchTab extends SearchDelegate {
   @override
   ThemeData appBarTheme(BuildContext context) {
     return ThemeData(
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         color: AppColors.appBarBackground,
       ),
       inputDecorationTheme: const InputDecorationTheme(
@@ -20,7 +20,7 @@ class SearchTab extends SearchDelegate {
   late Future<ArticlesResponse> getArticlesDataModel;
 
   SearchTab() {
-    getArticlesDataModel = ApiManger.loadArticlesList(searchKeyword='');
+    getArticlesDataModel = ApiManger.loadArticlesList(searchKeyword: '');
   }
 
   @override
@@ -34,6 +34,7 @@ class SearchTab extends SearchDelegate {
       ),
     ];
   }
+
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
@@ -63,7 +64,7 @@ class SearchTab extends SearchDelegate {
           child: ListView.builder(
             itemBuilder: (context, index) {
               var article = articles[index];
-              return TapsDetails(sourceId: article);
+              return TapsDetails(sourceId: article.source!.id!);
             },
             itemCount: articles.length,
           ),
@@ -74,9 +75,9 @@ class SearchTab extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return const
-    Center(
-      child: Text('Search',
+    return const Center(
+      child: Text(
+        'Search',
         style: TextStyle(color: Colors.black),
       ),
     );

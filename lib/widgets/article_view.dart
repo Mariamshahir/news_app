@@ -87,7 +87,7 @@ class _ArticleViewState extends State<ArticleView> {
                   Container(
                     padding: const EdgeInsets.symmetric(
                         vertical: 24, horizontal: 11),
-                    height: MediaQuery.of(context).size.height * 0.3,
+                    height: MediaQuery.of(context).size.height * 0.4,
                     decoration: BoxDecoration(
                         color: const Color(0x80757575),
                         borderRadius: BorderRadius.circular(25)),
