@@ -20,7 +20,7 @@ class SearchTab extends SearchDelegate {
   late Future<ArticlesResponse> getArticlesDataModel;
 
   SearchTab() {
-    getArticlesDataModel = ApiManger.loadArticlesList(searchKeyword: '');
+    getArticlesDataModel = ApiManger.loadArticlesList(sourceId: '', query: query);
   }
 
   @override
@@ -51,7 +51,7 @@ class SearchTab extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     return FutureBuilder(
-      future: ApiManger.loadArticlesList(searchKeyword: query),
+      future: ApiManger.loadArticlesList(sourceId: "", query: query),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
@@ -64,7 +64,7 @@ class SearchTab extends SearchDelegate {
           child: ListView.builder(
             itemBuilder: (context, index) {
               var article = articles[index];
-              return TapsDetails(sourceId: article.source!.id!);
+              return TapsDetails(sourceId: article.source!.id!, query: '',);
             },
             itemCount: articles.length,
           ),

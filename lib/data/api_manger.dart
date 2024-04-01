@@ -10,7 +10,8 @@ abstract class ApiManger {
 
   static Future<SourcesResponse> loadTabsList(String categoryId) async {
     try {
-      Uri url = Uri.parse("$baseUrl/v2/top-headlines/sources?apiKey=$apiKey&category=$categoryId");
+      Uri url = Uri.parse(
+          "$baseUrl/v2/top-headlines/sources?apiKey=$apiKey&category=$categoryId");
       Response response = await get(url);
       print("v2/top-headlines/sources(Body)-> ${response.body}");
       Map mapBody = jsonDecode(response.body);
@@ -25,10 +26,10 @@ abstract class ApiManger {
     }
   }
 
-  static Future<ArticlesResponse> loadArticlesList(String? sourceId,String? searchKeyword ,{language='en'}) async {
+  static Future<ArticlesResponse> loadArticlesList({required String sourceId,required String query,language = 'en'}) async {
     try {
-      Uri url =
-          Uri.parse("$baseUrl/v2/everything?apiKey=$apiKey&sources=$sourceId&language=$language&q=$searchKeyword");
+      Uri url = Uri.parse(
+          "$baseUrl/v2/everything?apiKey=$apiKey&sources=$sourceId&language=$language&q=$query");
       Response apiResponse = await get(url);
       ArticlesResponse articlesResponse =
           ArticlesResponse.fromJson(jsonDecode(apiResponse.body));
