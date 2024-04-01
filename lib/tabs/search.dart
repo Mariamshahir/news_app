@@ -61,12 +61,14 @@ class SearchTab extends SearchDelegate {
         }
         var articles = snapshot.data?.articles ?? [];
         return Expanded(
-          child: ListView.builder(
-            itemBuilder: (context, index) {
-              var article = articles[index];
-              return TapsDetails(sourceId: article.source!.id!, query: '',);
-            },
-            itemCount: articles.length,
+          child: Container(
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                var article = articles[index];
+                return TapsDetails(sourceId: article.source!.id!, query: '',);
+              },
+              itemCount: articles.length,
+            ),
           ),
         );
       },
