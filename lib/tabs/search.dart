@@ -59,17 +59,14 @@ class SearchTab extends SearchDelegate {
         if (snapshot.hasError) {
           return const Center(child: Text("Something went wrong"));
         }
-        var articles = snapshot.data?.articles ?? [];
-        return Expanded(
-          child: Container(
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                var article = articles[index];
-                return TapsDetails(sourceId: article.source!.id!, query: '',);
-              },
-              itemCount: articles.length,
-            ),
-          ),
+        var articles = (snapshot.data)?.articles ?? [];
+        return ListView.builder(
+          itemBuilder: (context, index) {
+            var article = articles[index];
+            var sourceId = article.source?.id ?? "";
+            return TapsDetails(sourceId: "", query: sourceId);
+          },
+          itemCount: articles.length,
         );
       },
     );
