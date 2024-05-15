@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:news_app/model/category.dart';
 import 'package:news_app/provider/language_provider.dart';
 import 'package:news_app/tabs/categories_tab.dart';
-import 'package:news_app/tabs/search.dart';
+// import 'package:news_app/tabs/search.dart';
 import 'package:news_app/tabs/settings.dart';
 import 'package:news_app/tabs/tabs_list.dart';
 import 'package:news_app/utils/app_language.dart';
 import 'package:news_app/utils/assets_app.dart';
 import 'package:news_app/utils/colors_app.dart';
 import 'package:news_app/utils/theme_app.dart';
+import 'package:news_app/tabs/search.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -62,9 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
               actions: [
                 IconButton(
                     onPressed: () {
-                      setState(() {
-                        showSearch(context: context, delegate: SearchTab());
-                      });
+                      showSearch(context: context, delegate: SearchArticle());
                     },
                     icon: const Icon(
                       Icons.search,
