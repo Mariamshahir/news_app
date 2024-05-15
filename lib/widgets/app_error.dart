@@ -12,14 +12,16 @@ class AppError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(error),
-        ElevatedButton(onPressed: () {
-          onRefreshClick?.call();
-        }, child: const Text("Refresh"))
-      ],
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(error),
+          ElevatedButton(onPressed: () {
+            onRefreshClick?.call();
+          }, child: const Text("Refresh"))
+        ],
+      ),
     );
   }
 }
