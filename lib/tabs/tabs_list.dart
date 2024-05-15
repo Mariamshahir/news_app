@@ -76,7 +76,7 @@ class _TabsListState extends State<TabsList> {
             child: TabBarView(
               children: sources
                   .map((source) => TapsDetails(
-                        sourceId: source.id!, query: '',
+                        sourceId: source.id!,
                       ))
                   .toList(),
             ),
